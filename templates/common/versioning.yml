@@ -1,0 +1,5 @@
+versioning:
+  stage: tagging
+  script:
+    - echo "Tag: v$(date +'%Y%m%d%H%M')"
+

@@ -1,0 +1,14 @@
+ project:
+  name: sample-app
+  language: python
+  build_tool: pip
+  deployment:
+    type: docker
+    environment: dev
+  quality:
+    lint: true
+    test: true
+    coverage: 85
+  branching:
+    strategy: semver
+

@@ -1,0 +1,48 @@
+
+# Begin templates/lint/python.yml
+ lint_python:
+  stage: lint
+  script:
+    - pip install flake8
+    - flake8 .
+
+
+# End templates/lint/python.yml
+
+# Begin templates/test/python.yml
+ test_python:
+  stage: test
+  script:
+    - pip install pytest
+    - pytest tests/
+
+
+# End templates/test/python.yml
+
+# Begin templates/build/pip.yml
+build_pip:
+  stage: build
+  script:
+    - python setup.py sdist bdist_wheel
+
+
+# End templates/build/pip.yml
+
+# Begin templates/deploy/docker.yml
+ deploy_docker:
+  stage: deploy
+  script:
+    - docker build -t $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA .
+    - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
+
+
+# End templates/deploy/docker.yml
+
+# Begin templates/common/versioning.yml
+versioning:
+  stage: tagging
+  script:
+    - echo "Tag: v$(date +'%Y%m%d%H%M')"
+
+
+# End templates/common/versioning.yml

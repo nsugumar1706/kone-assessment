@@ -1,0 +1,6 @@
+ test_python:
+  stage: test
+  script:
+    - pip install pytest
+    - pytest tests/
+

@@ -1,0 +1,5 @@
+build_pip:
+  stage: build
+  script:
+    - python setup.py sdist bdist_wheel
+
